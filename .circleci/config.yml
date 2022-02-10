@@ -28,7 +28,7 @@ jobs:
           command: |
             docker load -i ubuntu-dev.tar
             ./.circleci/build_image.sh chromium/chromium.dockerfile janitortechnology/chromium
-          no_output_timeout: 90m
+          no_output_timeout: 900m
 
   fennec:
     docker:
